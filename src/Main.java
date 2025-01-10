@@ -1,44 +1,51 @@
 import java.util.Locale;
 import java.util.Scanner;
 
+import entities.Triangle;
+
 public class Main {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
-		Scanner leitor = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Enter three numbers:");
-		double a = leitor.nextDouble();
-		double b = leitor.nextDouble();
-		double c = leitor.nextDouble();
+		Triangle x, y;
+		
+		x = new Triangle();
+		
+		y = new Triangle();
+		
+		System.out.println("Enter the measures of triangule X:");
+		x.a = scan.nextDouble();
+		x.b = scan.nextDouble();
+		x.c = scan.nextDouble();
+		
+		System.out.println("Enter the measures of triangle Y:");
+		y.a = scan.nextDouble();
+		y.b = scan.nextDouble();
+		y.c = scan.nextDouble();
+		
+		double areaX = x.area();
+		double areaY = y.area();
 		
 	
-		double higher = max(a, b, c);
+		System.out.printf("Triangle X area: %.4f%n" ,areaX);
+		System.out.printf("Triangle Y area: %.4f%n" ,areaY);
 		
-		showResult(higher);
-		
+		if(areaX > areaY) {
+			System.out.println("Larger area: X");
 		}
-	
-	
-	
-	public static double max(double x, double y, double z) {
-		double aux;
-		if(x > y && x > z) {
-			aux = x;
-		}
-		else if(y > z) {
-			aux = y;
+		else if(areaX == areaY){
+			System.out.println("X and Y have the same area");
+			
 		}
 		else {
-			aux = z;
+			System.out.println("Larger area: Y");
 		}
-		return aux;
-	}
-
-	public static void showResult(double value) {
-		System.out.println("Higher: " + value );
-	}
 		
+		scan.close();
+
+		}	
 	}
 	
 
